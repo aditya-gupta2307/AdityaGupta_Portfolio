@@ -50,11 +50,11 @@ export function sceneKeyframes(aspect: number): Record<SceneId, KF> {
     hero: kf([1.22, 0.8, 1.52], [0.02, 0.15, -0.06], { shiftX: 0.17, parallax: 1 }),
     approach: kf([0.3, 0.52, 1.08], [0, 0.31, -0.2], { shiftY: 0.21, parallax: 0.6 }),
     workspace: kf([sx, sy, sz + enterD], [sx, sy, sz], { fov: enterFov, parallax: 0 }),
-    projects: kf([0.98, 0.3, 0.04], [0.42, 0.05, -0.1], { fov: 30, shiftX: 0.22 }),
+    projects: kf([1.14, 0.36, 0.1], [0.42, 0.05, -0.1], { fov: 30, shiftX: 0.27 }),
     skills: kf([0.26, 0.44, 0.52], [-0.04, 0.0, 0.07], { fov: 30, shiftX: 0.24 }),
-    about: kf([-0.08, 0.36, 0.62], [-0.5, 0.12, -0.2], { fov: 32, shiftX: -0.22, lamp: 1.6 }),
+    about: kf([0, 0.42, 0.84], [-0.5, 0.11, -0.18], { fov: 32, shiftX: -0.33, lamp: 1.6 }),
     resume: kf([-0.62, 0.46, 0.86], [-0.02, 0.3, -0.2], { fov: 32, shiftX: -0.22 }),
-    contact: kf([0.15, 0.9, 2.35], [0.02, 0.18, -0.1], { fov: 30, shiftX: 0.2, parallax: 0.8 }),
+    contact: kf([0.2, 0.95, 2.55], [0.02, 0.18, -0.1], { fov: 30, shiftX: 0.27, parallax: 0.8 }),
   };
 }
 
