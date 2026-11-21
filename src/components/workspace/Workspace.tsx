@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { openApp, setState, useStore, goTo, type AppId, type WorkspaceMode } from '../../state/store';
-import { profile } from '../../data/profile';
+import { profile, education } from '../../data/profile';
 import { APPS, AppContent } from './apps';
 import { Window } from './Window';
 import { Terminal } from './Terminal';
@@ -40,11 +40,27 @@ function Desktop({ interactive }: { interactive: boolean }) {
   return (
     <div className="desk">
       <div className="desk__hello" aria-hidden={windows.length > 0}>
-        <p className="desk__eyebrow">
-          {profile.year} · {profile.location}
-        </p>
-        <h2 className="desk__name">{profile.name}</h2>
-        <p className="desk__role">{profile.role}</p>
+        <p className="desk__eyebrow">Workspace</p>
+        <h2 className="desk__greet">Open an app, or try the terminal.</h2>
+        <div className="desk__widgets">
+          <button type="button" className="widget widget--undercut" tabIndex={t} onClick={() => openApp('undercut')}>
+            <span className="widget__label">
+              <span className="widget__dot" aria-hidden="true" /> Now building
+            </span>
+            <span className="widget__title">Undercut</span>
+            <span className="widget__text">F1 forecasts that grade themselves</span>
+          </button>
+          <button type="button" className="widget" tabIndex={t} onClick={() => setState({ mode: 'terminal' })}>
+            <span className="widget__label">Try</span>
+            <span className="widget__title widget__title--mono">open undercut</span>
+            <span className="widget__text">in the portfolio terminal</span>
+          </button>
+          <button type="button" className="widget" tabIndex={t} onClick={() => openApp('about')}>
+            <span className="widget__label">{education.inProgress.term}</span>
+            <span className="widget__title">{education.inProgress.courses.map((c) => c.code).join(' · ')}</span>
+            <span className="widget__text">{profile.year} at Purdue</span>
+          </button>
+        </div>
       </div>
 
       <nav className="desk__icons" aria-label="Desktop apps">
