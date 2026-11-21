@@ -28,7 +28,7 @@ export function WorkspaceSection({ has3D }: { has3D: boolean }) {
     const expand = ScrollTrigger.create({
       trigger: el,
       start: 'top top',
-      end: () => `+=${window.innerHeight * 0.85}`,
+      end: () => `+=${window.innerHeight * 0.55}`,
       onUpdate: (self) => {
         progress = self.progress;
       },
