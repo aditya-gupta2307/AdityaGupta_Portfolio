@@ -61,9 +61,9 @@ function loft(sections: Section[], radial = 28, exponent = 2.6, zOffset = 0) {
 
 const BODY: Section[] = [
   { x: 0.126, w: 0.005, h: 0.0035, y: 0.0175 },
-  { x: 0.112, w: 0.0085, h: 0.0052, y: 0.0185 },
-  { x: 0.09, w: 0.012, h: 0.0068, y: 0.0205 },
-  { x: 0.065, w: 0.0155, h: 0.0088, y: 0.0228 },
+  { x: 0.112, w: 0.0068, h: 0.0048, y: 0.0182 },
+  { x: 0.09, w: 0.0092, h: 0.0062, y: 0.02 },
+  { x: 0.065, w: 0.0125, h: 0.0082, y: 0.0225 },
   { x: 0.04, w: 0.0185, h: 0.0115, y: 0.0255 },
   { x: 0.012, w: 0.0205, h: 0.0138, y: 0.0278 },
   { x: -0.015, w: 0.0215, h: 0.0165, y: 0.0305 },
@@ -73,13 +73,13 @@ const BODY: Section[] = [
   { x: -0.112, w: 0.004, h: 0.005, y: 0.0225 },
 ];
 
-const POD = (s: number): Section[] => [
-  { x: 0.032, w: 0.0045, h: 0.0062, y: 0.019 },
-  { x: 0.024, w: 0.0082, h: 0.0088, y: 0.02 },
-  { x: 0.0, w: 0.0095, h: 0.0098, y: 0.0205 },
-  { x: -0.035, w: 0.0082, h: 0.0082, y: 0.019 },
-  { x: -0.07, w: 0.0035, h: 0.0042, y: 0.0155 },
-].map((p) => ({ ...p, w: p.w * (s > 0 ? 1 : 1) }));
+const POD: Section[] = [
+  { x: 0.03, w: 0.003, h: 0.0035, y: 0.0175 },
+  { x: 0.02, w: 0.0085, h: 0.0072, y: 0.0185 },
+  { x: -0.005, w: 0.0095, h: 0.0082, y: 0.0195 },
+  { x: -0.04, w: 0.0072, h: 0.0068, y: 0.018 },
+  { x: -0.07, w: 0.0025, h: 0.0035, y: 0.0155 },
+];
 
 const WHEELS = [
   { x: 0.086, z: 0.044, r: 0.0168, w: 0.0135 },
@@ -121,8 +121,8 @@ export function F1Car({ active = 0, accent = '#ffb21e', showPlinth = true }: Car
 
   const geo = useMemo(() => {
     const body = loft(BODY, 32);
-    const podL = loft(POD(1), 24, 2.4, 0.027);
-    const podR = loft(POD(-1), 24, 2.4, -0.027);
+    const podL = loft(POD, 24, 2.8, 0.024);
+    const podR = loft(POD, 24, 2.8, -0.024);
     const fin = new THREE.ExtrudeGeometry(
       new THREE.Shape([new THREE.Vector2(-0.012, 0), new THREE.Vector2(-0.092, 0), new THREE.Vector2(-0.092, 0.006), new THREE.Vector2(-0.03, 0.016), new THREE.Vector2(-0.012, 0.016)]),
       { depth: 0.0012, bevelEnabled: false },
@@ -133,10 +133,9 @@ export function F1Car({ active = 0, accent = '#ffb21e', showPlinth = true }: Car
     const arms: THREE.BufferGeometry[] = [];
     for (const w of WHEELS) {
       for (const s of [1, -1]) {
-        for (const dy of [0.004, -0.004]) {
-          arms.push(tube([[w.x + 0.012, w.r + dy * 0.6 + 0.004, s * 0.016], [w.x, w.r + dy, s * (w.z - w.w / 2 - 0.001)]], 0.0007, 4, 6));
-          arms.push(tube([[w.x - 0.012, w.r + dy * 0.6 + 0.004, s * 0.016], [w.x, w.r + dy, s * (w.z - w.w / 2 - 0.001)]], 0.0007, 4, 6));
-        }
+        const hub: [number, number, number] = [w.x, w.r + 0.002, s * (w.z - w.w / 2 - 0.001)];
+        arms.push(tube([[w.x + 0.009, w.r + 0.006, s * 0.014], hub], 0.0008, 4, 6));
+        arms.push(tube([[w.x - 0.009, w.r + 0.006, s * 0.014], hub], 0.0008, 4, 6));
       }
     }
     return { body, podL, podR, fin, halo, pillar, arms };
@@ -174,12 +173,6 @@ export function F1Car({ active = 0, accent = '#ffb21e', showPlinth = true }: Car
         <mesh geometry={geo.podL} material={mats.body} castShadow />
         <mesh geometry={geo.podR} material={mats.body} castShadow />
         <mesh geometry={geo.fin} material={mats.carbon} castShadow />
-        {/* Sidepod inlets */}
-        {[1, -1].map((s) => (
-          <mesh key={s} material={mats.carbon} position={[0.0325, 0.02, s * 0.027]} rotation={[0, Math.PI / 2, 0]}>
-            <circleGeometry args={[0.005, 20]} />
-          </mesh>
-        ))}
         {/* Accent stripe on the nose */}
         <mesh material={mats.accent} position={[0.085, 0.0272, 0]} rotation={[0, 0, -0.1]}>
           <boxGeometry args={[0.04, 0.0006, 0.004]} />
