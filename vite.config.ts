@@ -7,6 +7,10 @@ import react from '@vitejs/plugin-react';
 export default defineConfig({
   base: '/AdityaGupta_Portfolio/',
   plugins: [react()],
+  resolve: { dedupe: ['react', 'react-dom', 'three'] },
+  optimizeDeps: {
+    include: ['react', 'react-dom', 'react-dom/client', 'three', '@react-three/fiber', '@react-three/drei', 'gsap', 'gsap/ScrollTrigger'],
+  },
   build: {
     target: 'es2022',
     rollupOptions: {
