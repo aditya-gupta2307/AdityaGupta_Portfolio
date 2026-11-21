@@ -328,7 +328,7 @@ button {
     gap: 2px;
     border-radius: var(--radius-lg);
     border: 1px solid var(--line);
-    background: rgba(16, 17, 20, 0.96);
+    background: rgba(16, 17, 20, 0.985);
     -webkit-backdrop-filter: blur(18px);
     backdrop-filter: blur(18px);
     opacity: 0;
@@ -349,6 +349,7 @@ button {
     font-size: 1rem;
   }
   .nav__links .nav__resume {
+    display: flex;
     margin: 6px 0 0;
     justify-content: center;
   }
