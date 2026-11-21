@@ -366,7 +366,6 @@
   flex: 1;
   min-height: 0;
   overflow: auto;
-  overscroll-behavior: contain;
   padding: 18px 20px 22px;
 }
 
@@ -628,7 +627,6 @@
   flex: 1;
   min-height: 0;
   overflow: auto;
-  overscroll-behavior: contain;
   padding: 22px 26px 10px;
 }
 .term__line {
@@ -735,7 +733,6 @@
   position: absolute;
   inset: 0;
   overflow: auto;
-  overscroll-behavior: contain;
   padding: 24px 26px 28px;
 }
 .dash__head {
