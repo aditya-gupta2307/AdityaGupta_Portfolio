@@ -1007,9 +1007,11 @@
 @media (max-width: 860px) {
   .section:has(.panel-left)::before,
   .section:has(.panel-right)::before {
-    background: linear-gradient(180deg, rgba(8, 9, 11, 0) 0%, rgba(8, 9, 11, 0.78) 26vh, rgba(8, 9, 11, 0.9) 100%);
-    mask-image: linear-gradient(180deg, transparent 0%, #000 24vh);
-    -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 24vh);
+    /* On phones the desk shows in the strip above the text, so keep that
+       strip sharp and start the blur where the text begins. */
+    background: linear-gradient(180deg, rgba(8, 9, 11, 0) 0, rgba(8, 9, 11, 0) 24vh, rgba(8, 9, 11, 0.8) 36vh, rgba(8, 9, 11, 0.88) 100%);
+    mask-image: linear-gradient(180deg, transparent 0, transparent 26vh, #000 36vh);
+    -webkit-mask-image: linear-gradient(180deg, transparent 0, transparent 26vh, #000 36vh);
   }
   .panel-left,
   .panel-right {
@@ -1048,8 +1050,13 @@
     margin-bottom: 3vh;
   }
   .approach__modes {
-    flex-wrap: wrap;
-    justify-content: center;
+    display: none;
+  }
+  .ws-section__hint {
+    display: none;
+  }
+  .uc-intro__text {
+    display: none;
   }
   .flagship__head {
     min-height: auto;
