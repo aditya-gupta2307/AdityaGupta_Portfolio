@@ -8,11 +8,18 @@ import { profile } from '../../data/profile';
  * that one. Clicking the screen scrolls into the full workspace.
  */
 export function ScreenView() {
-  const closing = useStore((s) => s.scene === 'contact');
+  const scene = useStore((s) => s.scene);
+  const closing = scene === 'contact';
+  // The name shows once, as the power-on splash in the opening shot.
+  const splash = scene === 'hero';
   return (
     <div className="screen" aria-hidden="true">
       <div className="screen__inert" inert>
         <Workspace variant="screen" />
+      </div>
+      <div className="screen__splash" data-visible={splash}>
+        <p className="screen__splash-name">{profile.name}</p>
+        <p className="screen__splash-role">{profile.role}</p>
       </div>
       <div className="screen__closing" data-visible={closing}>
         <p className="screen__closing-kicker">Thanks for stopping by</p>
