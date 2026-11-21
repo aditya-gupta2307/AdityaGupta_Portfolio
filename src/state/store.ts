@@ -1,4 +1,5 @@
 import { useSyncExternalStore } from 'react';
+import { WELCOME, type Line } from '../data/terminal';
 
 /**
  * A tiny shared store that both the React UI and the 3D scene read.
@@ -26,6 +27,12 @@ export interface UIState {
   keyPulse: { key: string; n: number };
   cubeTurns: number;
   mugTurns: number;
+  /** The full-screen workspace panel is showing over the canvas. */
+  panelVisible: boolean;
+  /** The panel fully covers the canvas, so rendering can pause. */
+  canvasPaused: boolean;
+  term: Line[];
+  termHistory: string[];
 }
 
 let state: UIState = {
@@ -41,6 +48,10 @@ let state: UIState = {
   keyPulse: { key: '', n: 0 },
   cubeTurns: 0,
   mugTurns: 0,
+  panelVisible: false,
+  canvasPaused: false,
+  term: WELCOME,
+  termHistory: [],
 };
 
 const listeners = new Set<() => void>();

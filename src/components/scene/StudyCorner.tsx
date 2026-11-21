@@ -81,8 +81,8 @@ export function PurdueCorner() {
           </group>
         );
       })}
-      {/* Nameplate: a black acrylic wedge with a printed face, in front of the books. */}
-      <group position={[0.115, 0, 0.02]} rotation={[0, Math.PI / 2 - 0.25, 0]}>
+      {/* Nameplate: a black acrylic block with a printed face, in front of the books. */}
+      <group position={[0.02, 0, 0.145]} rotation={[0, -0.1, 0]}>
         <mesh geometry={roundedBox(0.15, 0.03, 0.022, 0.003)} material={mats.plaque} position={[0, 0.015, 0]} rotation={[-0.32, 0, 0]} castShadow />
         <mesh material={mats.plaqueFace} position={[0, 0.0175, 0.0108]} rotation={[-0.32, 0, 0]}>
           <planeGeometry args={[0.14, 0.028]} />
