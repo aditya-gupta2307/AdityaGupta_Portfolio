@@ -48,6 +48,13 @@ export const skillGroups: SkillGroup[] = [
     ],
   },
   {
+    id: 'ai',
+    label: 'AI Tools',
+    command: 'skills --group ai',
+    summary: 'Using AI to research, analyze data, and build and test practical solutions.',
+    skills: [{ name: 'Purdue GenAI Studio' }, { name: 'Research & data analysis with AI' }, { name: 'Building & testing with AI tools', usedIn: 'Undercut' }],
+  },
+  {
     id: 'tools',
     label: 'Tools',
     command: 'skills --group tools',
