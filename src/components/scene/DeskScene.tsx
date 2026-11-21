@@ -104,7 +104,7 @@ export default function DeskScene({ quality, reducedMotion }: Props) {
           <PuzzleCube />
         </Obj>
 
-        <Obj id="lamp" position={[-0.68, 0, -0.26]} labelOffset={[0.2, 0.46, 0.02]} lift={0}>
+        <Obj id="lamp" position={[-0.68, 0, -0.26]} rotation={[0, -0.35, 0]} labelOffset={[0.2, 0.46, 0.02]} lift={0}>
           <Lamp shadows={quality === 'high'} />
         </Obj>
 
