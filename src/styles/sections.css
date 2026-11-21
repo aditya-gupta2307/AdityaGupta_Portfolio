@@ -45,11 +45,22 @@
   pointer-events: none;
   z-index: -1;
 }
+/* A "smudge" behind the text: the desk is blurred and darkened under the
+   column and fades back to sharp toward the open side of the frame. */
+.section:has(.panel-left)::before,
+.section:has(.panel-right)::before {
+  -webkit-backdrop-filter: blur(18px) saturate(115%);
+  backdrop-filter: blur(18px) saturate(115%);
+}
 .section:has(.panel-left)::before {
-  background: linear-gradient(90deg, rgba(8, 9, 11, 0.9) 0%, rgba(8, 9, 11, 0.72) 38%, rgba(8, 9, 11, 0) 64%);
+  background: linear-gradient(90deg, rgba(8, 9, 11, 0.86) 0%, rgba(8, 9, 11, 0.74) 45%, rgba(8, 9, 11, 0.3) 62%, rgba(8, 9, 11, 0) 72%);
+  mask-image: linear-gradient(90deg, #000 0%, #000 52%, transparent 72%);
+  -webkit-mask-image: linear-gradient(90deg, #000 0%, #000 52%, transparent 72%);
 }
 .section:has(.panel-right)::before {
-  background: linear-gradient(270deg, rgba(8, 9, 11, 0.9) 0%, rgba(8, 9, 11, 0.72) 38%, rgba(8, 9, 11, 0) 64%);
+  background: linear-gradient(270deg, rgba(8, 9, 11, 0.86) 0%, rgba(8, 9, 11, 0.74) 45%, rgba(8, 9, 11, 0.3) 62%, rgba(8, 9, 11, 0) 72%);
+  mask-image: linear-gradient(270deg, #000 0%, #000 52%, transparent 72%);
+  -webkit-mask-image: linear-gradient(270deg, #000 0%, #000 52%, transparent 72%);
 }
 
 /* Entrance animation for the hero copy */
@@ -183,8 +194,8 @@
   color: var(--silver);
   font-size: 0.8rem;
   cursor: pointer;
-  backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
   transition:
     border-color 200ms,
     color 200ms;
@@ -207,12 +218,19 @@
   align-items: flex-end;
 }
 .approach__inner {
-  max-width: var(--maxw);
+  width: min(760px, calc(100% - 2 * var(--gutter)));
+  margin-bottom: 7vh;
+  padding: 30px clamp(20px, 4vw, 44px) 32px;
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-bottom: 8vh;
+  border-radius: 28px;
+  border: 1px solid var(--line);
+  background: rgba(10, 11, 13, 0.62);
+  -webkit-backdrop-filter: blur(22px) saturate(120%);
+  backdrop-filter: blur(22px) saturate(120%);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.45);
 }
 .approach__title {
   margin: 14px 0 12px;
@@ -244,8 +262,8 @@
   border-radius: 999px;
   border: 1px solid var(--line);
   background: rgba(8, 9, 11, 0.6);
-  backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
   color: var(--silver);
   font-size: 0.85rem;
 }
@@ -884,8 +902,8 @@
   border-radius: var(--radius-lg);
   border: 1px solid rgba(255, 178, 30, 0.24);
   background: linear-gradient(160deg, rgba(255, 178, 30, 0.09), transparent 40%), rgba(10, 11, 13, 0.88);
-  backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
   box-shadow: 0 40px 100px rgba(0, 0, 0, 0.5);
   outline: none;
   opacity: 0;
@@ -976,6 +994,8 @@
   .section:has(.panel-left)::before,
   .section:has(.panel-right)::before {
     background: linear-gradient(180deg, rgba(8, 9, 11, 0) 0%, rgba(8, 9, 11, 0.78) 26vh, rgba(8, 9, 11, 0.9) 100%);
+    mask-image: linear-gradient(180deg, transparent 0%, #000 24vh);
+    -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 24vh);
   }
   .panel-left,
   .panel-right {
@@ -1011,7 +1031,7 @@
     background: linear-gradient(180deg, rgba(8, 9, 11, 0) 55%, rgba(8, 9, 11, 0.88) 78%);
   }
   .approach__inner {
-    padding-bottom: 4vh;
+    margin-bottom: 3vh;
   }
   .approach__modes {
     flex-wrap: wrap;
