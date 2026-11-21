@@ -465,10 +465,14 @@ body {
   .uc-hero__grid,
   .uc-split,
   .demo__grid {
-    grid-template-columns: 1fr;
+    /* minmax(0, …) so a wide child (the canvas, a long line) can't push the
+       column past the screen edge. */
+    grid-template-columns: minmax(0, 1fr);
   }
   .uc-hero__stage {
     order: -1;
+    width: 100%;
+    min-height: 0;
     aspect-ratio: 4 / 3;
   }
   .uc-pages {
