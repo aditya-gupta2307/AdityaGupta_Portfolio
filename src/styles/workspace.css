@@ -241,23 +241,21 @@
   position: absolute;
   top: calc(28px + var(--i) * 26px);
   left: calc(130px + var(--i) * 34px);
-  width: min(720px, calc(100% - 170px));
-  height: min(520px, calc(100% - 60px));
+  width: min(760px, calc(100% - 170px));
+  height: min(580px, calc(100% - 60px));
   display: flex;
   flex-direction: column;
   border-radius: 14px;
-  background: rgba(20, 22, 26, 0.94);
+  background: #15171b;
   border: 1px solid rgba(244, 245, 247, 0.1);
   box-shadow:
     0 30px 80px rgba(0, 0, 0, 0.55),
     0 2px 0 rgba(255, 255, 255, 0.03) inset;
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
   outline: none;
   animation: win-in 360ms var(--ease-out);
 }
-.win[data-active='false'] {
-  opacity: 0.86;
+.win[data-active='false'] .win__bar {
+  opacity: 0.6;
 }
 .win[data-app='undercut'] {
   border-color: rgba(255, 178, 30, 0.28);
