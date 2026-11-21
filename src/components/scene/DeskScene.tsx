@@ -111,7 +111,7 @@ export default function DeskScene({ quality, reducedMotion }: Props) {
           <Mug />
         </Obj>
 
-        <Obj id="cube" position={[0.64, 0, -0.24]} labelOffset={[0, 0.12, 0]}>
+        <Obj id="cube" position={[-0.215, 0, -0.27]} labelOffset={[0, 0.12, 0]}>
           <PuzzleCube />
         </Obj>
 
