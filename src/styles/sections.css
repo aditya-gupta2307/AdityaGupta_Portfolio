@@ -49,18 +49,32 @@
    column and fades back to sharp toward the open side of the frame. */
 .section:has(.panel-left)::before,
 .section:has(.panel-right)::before {
-  -webkit-backdrop-filter: blur(18px) saturate(115%);
-  backdrop-filter: blur(18px) saturate(115%);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+}
+.section {
+  /* Where the 600px text column ends, measured from its side of the page. */
+  --text-edge: calc((100vw - min(100vw, var(--maxw))) / 2 + var(--gutter) + 600px);
 }
 .section:has(.panel-left)::before {
-  background: linear-gradient(90deg, rgba(8, 9, 11, 0.86) 0%, rgba(8, 9, 11, 0.74) 45%, rgba(8, 9, 11, 0.3) 62%, rgba(8, 9, 11, 0) 72%);
-  mask-image: linear-gradient(90deg, #000 0%, #000 52%, transparent 72%);
-  -webkit-mask-image: linear-gradient(90deg, #000 0%, #000 52%, transparent 72%);
+  background: linear-gradient(
+    90deg,
+    rgba(8, 9, 11, 0.8) 0,
+    rgba(8, 9, 11, 0.62) calc(var(--text-edge) - 60px),
+    rgba(8, 9, 11, 0) calc(var(--text-edge) + 110px)
+  );
+  mask-image: linear-gradient(90deg, #000 0, #000 calc(var(--text-edge) - 20px), transparent calc(var(--text-edge) + 110px));
+  -webkit-mask-image: linear-gradient(90deg, #000 0, #000 calc(var(--text-edge) - 20px), transparent calc(var(--text-edge) + 110px));
 }
 .section:has(.panel-right)::before {
-  background: linear-gradient(270deg, rgba(8, 9, 11, 0.86) 0%, rgba(8, 9, 11, 0.74) 45%, rgba(8, 9, 11, 0.3) 62%, rgba(8, 9, 11, 0) 72%);
-  mask-image: linear-gradient(270deg, #000 0%, #000 52%, transparent 72%);
-  -webkit-mask-image: linear-gradient(270deg, #000 0%, #000 52%, transparent 72%);
+  background: linear-gradient(
+    270deg,
+    rgba(8, 9, 11, 0.8) 0,
+    rgba(8, 9, 11, 0.62) calc(var(--text-edge) - 60px),
+    rgba(8, 9, 11, 0) calc(var(--text-edge) + 110px)
+  );
+  mask-image: linear-gradient(270deg, #000 0, #000 calc(var(--text-edge) - 20px), transparent calc(var(--text-edge) + 110px));
+  -webkit-mask-image: linear-gradient(270deg, #000 0, #000 calc(var(--text-edge) - 20px), transparent calc(var(--text-edge) + 110px));
 }
 
 /* Entrance animation for the hero copy */
@@ -213,7 +227,7 @@
 /* ---------- Approach ---------- */
 
 .approach {
-  min-height: 130vh;
+  min-height: 110vh;
   display: flex;
   align-items: flex-end;
 }
@@ -228,8 +242,8 @@
   border-radius: 28px;
   border: 1px solid var(--line);
   background: rgba(10, 11, 13, 0.62);
-  -webkit-backdrop-filter: blur(22px) saturate(120%);
-  backdrop-filter: blur(22px) saturate(120%);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
   box-shadow: 0 30px 80px rgba(0, 0, 0, 0.45);
 }
 .approach__title {
@@ -272,7 +286,7 @@
 
 .ws-section {
   position: relative;
-  height: 280vh;
+  height: 200vh;
 }
 .ws-section__sticky {
   position: sticky;
@@ -307,12 +321,12 @@
 }
 .ws-section__anchor {
   position: absolute;
-  top: 95vh;
+  top: 60vh;
   height: 1px;
   width: 1px;
 }
 .page[data-3d='false'] .ws-section {
-  height: 220vh;
+  height: 170vh;
 }
 
 /* ---------- Projects ---------- */
