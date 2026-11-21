@@ -40,7 +40,7 @@ export function CameraRig({ reducedMotion }: { reducedMotion: boolean }) {
     const dt = Math.min(delta, 1 / 20);
     const goal = (focus && focusKF[focus]) || rig;
     const c = cur.current;
-    const lambda = focus ? 3.2 : 5.5;
+    const lambda = focus ? 3.2 : 8;
     const keys = Object.keys(goal) as (keyof CameraState)[];
     for (const k of keys) {
       c[k] = reducedMotion || first.current ? goal[k] : THREE.MathUtils.damp(c[k], goal[k], lambda, dt);

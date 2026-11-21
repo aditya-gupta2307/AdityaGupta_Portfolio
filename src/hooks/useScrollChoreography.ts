@@ -36,7 +36,7 @@ export function useScrollChoreography(reducedMotion: boolean) {
       Object.assign(rig, KF.hero);
       tl = gsap.timeline({
         defaults: { ease: 'power2.inOut' },
-        scrollTrigger: { start: 0, end: () => ScrollTrigger.maxScroll(window), scrub: 0.8 },
+        scrollTrigger: { start: 0, end: () => ScrollTrigger.maxScroll(window), scrub: 0.35 },
       });
       tl.set({}, {}, Math.max(1, max));
 
