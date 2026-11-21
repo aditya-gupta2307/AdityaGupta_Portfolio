@@ -7,6 +7,10 @@ import { useStore } from '../../state/store';
 
 const target = new THREE.Vector3();
 const lookAt = new THREE.Vector3();
+const forward = new THREE.Vector3();
+const right = new THREE.Vector3();
+const up = new THREE.Vector3();
+const WORLD_UP = new THREE.Vector3(0, 1, 0);
 
 /**
  * Moves the camera toward the state written by the scroll timeline (or a
@@ -56,21 +60,27 @@ export function CameraRig({ reducedMotion }: { reducedMotion: boolean }) {
     target.y += -sp.y * 0.035 * par + Math.sin(t * 0.17 + 1) * 0.003 * idle;
     camera.position.copy(target);
     lookAt.set(c.tx + sp.x * 0.012 * par, c.ty - sp.y * 0.008 * par, c.tz);
-    camera.lookAt(lookAt);
 
     if (Math.abs(camera.fov - c.fov) > 1e-3) {
       camera.fov = c.fov;
       camera.updateProjectionMatrix();
     }
-    // Lens shift: offsets the image so copy and scene can share the frame.
-    const w = size.width;
-    const h = size.height;
-    const ox = -c.shiftX * w;
-    const oy = c.shiftY * h;
-    const view = camera.view;
-    if (!view || Math.abs(view.offsetX - ox) > 0.5 || Math.abs(view.offsetY - oy) > 0.5 || view.fullWidth !== w || view.fullHeight !== h) {
-      camera.setViewOffset(w, h, ox, oy, w, h);
+
+    // Framing shift: aim slightly beside the subject so it sits off-centre
+    // and leaves room for text. (A true lens shift via setViewOffset would
+    // misplace the HTML screen, which assumes a centred projection.)
+    if (c.shiftX || c.shiftY) {
+      forward.subVectors(lookAt, target);
+      const d = forward.length();
+      forward.normalize();
+      right.crossVectors(forward, WORLD_UP).normalize();
+      up.crossVectors(right, forward).normalize();
+      const halfH = Math.tan((camera.fov * Math.PI) / 360) * d;
+      const halfW = halfH * camera.aspect;
+      lookAt.addScaledVector(right, -c.shiftX * 2 * halfW);
+      lookAt.addScaledVector(up, -c.shiftY * 2 * halfH);
     }
+    camera.lookAt(lookAt);
   }, -1);
 
   return null;
