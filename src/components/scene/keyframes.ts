@@ -38,10 +38,10 @@ export function sceneKeyframes(aspect: number): Record<SceneId, KF> {
       hero: kf([0.95, 1.05, 2.75], [0.02, 0.16, -0.05], { fov: 34, shiftY: 0.16, parallax: 0.6 }),
       approach: kf([0.22, 0.62, 1.75], [0, 0.28, -0.2], { fov: 34, shiftY: 0.22 }),
       workspace: kf([sx, sy, sz + enterD], [sx, sy, sz], { fov: enterFov, parallax: 0 }),
-      projects: kf([0.82, 0.36, 0.02], [0.4, 0.04, -0.08], { fov: 34, shiftY: 0.22 }),
-      skills: kf([0.1, 0.62, 0.62], [-0.04, 0, 0.08], { fov: 34, shiftY: 0.22 }),
-      about: kf([-0.25, 0.45, 0.85], [-0.5, 0.1, -0.2], { fov: 34, shiftY: 0.22, lamp: 1.6 }),
-      resume: kf([-0.4, 0.6, 1.3], [0, 0.3, -0.2], { fov: 34, shiftY: 0.22 }),
+      projects: kf([0.23, 0.53, 0.84], [0.42, 0.04, -0.1], { fov: 34, shiftY: 0.3 }),
+      skills: kf([0.14, 0.74, 0.8], [-0.04, 0, 0.08], { fov: 34, shiftY: 0.3 }),
+      about: kf([-0.1, 0.58, 1.15], [-0.45, 0.1, -0.2], { fov: 34, shiftY: 0.3, lamp: 1.6 }),
+      resume: kf([-0.5, 0.78, 1.85], [0, 0.28, -0.2], { fov: 34, shiftY: 0.3 }),
       contact: kf([0, 1.1, 3.1], [0, 0.18, -0.1], { fov: 34, shiftY: 0.12 }),
     };
   }
@@ -63,7 +63,7 @@ export function focusKeyframes(aspect: number): Partial<Record<DeskObjectId, KF>
   const portrait = aspect < 0.95;
   return {
     car: portrait
-      ? kf([0.7, 0.22, -0.1], [0.4, 0.03, -0.08], { fov: 34, shiftY: 0.2, parallax: 0.3 })
+      ? kf([0.3, 0.37, 0.62], [0.42, 0.03, -0.09], { fov: 34, shiftY: 0.34, parallax: 0.3 })
       : kf([0.93, 0.24, -0.15], [0.41, 0.03, -0.08], { fov: 28, shiftX: 0.19, parallax: 0.3 }),
   };
 }
