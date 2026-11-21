@@ -1,0 +1,68 @@
+/* The fixed 3D layer and the labels that float above desk objects. */
+
+.scene-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  opacity: 0;
+  transition: opacity 1.2s var(--ease-out);
+}
+.scene-layer[data-ready='true'] {
+  opacity: 1;
+}
+.desk-canvas {
+  position: absolute !important;
+  inset: 0;
+  touch-action: pan-y;
+}
+.scene-layer__veil {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(180deg, rgba(8, 9, 11, 0.55) 0%, rgba(8, 9, 11, 0) 14%),
+    radial-gradient(120% 90% at 50% 50%, transparent 55%, rgba(8, 9, 11, 0.55) 100%);
+}
+
+.scene-fallback {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(60% 50% at 70% 55%, rgba(185, 190, 198, 0.12), transparent 70%),
+    radial-gradient(30% 30% at 30% 40%, rgba(242, 197, 138, 0.07), transparent 70%),
+    var(--ink-0);
+}
+
+.desk-label {
+  display: grid;
+  gap: 2px;
+  min-width: max-content;
+  padding: 8px 12px;
+  border-radius: 12px;
+  background: rgba(12, 13, 16, 0.86);
+  border: 1px solid rgba(244, 245, 247, 0.12);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+  transform: translateY(6px) scale(0.98);
+  opacity: 0;
+  transition:
+    opacity 220ms var(--ease-out),
+    transform 260ms var(--ease-out);
+  pointer-events: none;
+  font-family: var(--font-sans);
+  white-space: nowrap;
+}
+.desk-label[data-visible='true'] {
+  opacity: 1;
+  transform: none;
+}
+.desk-label strong {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--white);
+}
+.desk-label span {
+  font-size: 12px;
+  color: var(--silver);
+}
