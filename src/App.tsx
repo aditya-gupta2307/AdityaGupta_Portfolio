@@ -10,12 +10,13 @@ import { Contact, Resume } from './components/portfolio/Contact';
 import { UndercutIntro } from './components/portfolio/UndercutIntro';
 import { useScrollChoreography } from './hooks/useScrollChoreography';
 import { detectQuality, hasWebGL, useReducedMotion } from './hooks/useMedia';
-import { setState } from './state/store';
+import { setState, useStore } from './state/store';
 
 export default function App() {
   const reducedMotion = useReducedMotion();
   const [has3D, setHas3D] = useState(() => hasWebGL());
   const [quality] = useState(detectQuality);
+  const focused = useStore((s) => s.focus !== null);
 
   useScrollChoreography(reducedMotion);
 
@@ -38,7 +39,7 @@ export default function App() {
       </a>
       <Nav />
       <SceneLayer has3D={has3D} quality={quality} reducedMotion={reducedMotion} onFail={() => setHas3D(false)} />
-      <main className="page" data-3d={has3D}>
+      <main className="page" data-3d={has3D} data-focus={focused}>
         <Hero has3D={has3D} />
         <Approach />
         <WorkspaceSection has3D={has3D} />

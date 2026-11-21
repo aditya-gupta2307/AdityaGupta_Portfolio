@@ -864,6 +864,14 @@
 
 /* ---------- Undercut intro (car click) ---------- */
 
+.page > .section {
+  transition: opacity 500ms var(--ease-out);
+}
+.page[data-focus='true'] > .section {
+  opacity: 0;
+  pointer-events: none;
+}
+
 .uc-intro {
   position: fixed;
   inset: 0;
