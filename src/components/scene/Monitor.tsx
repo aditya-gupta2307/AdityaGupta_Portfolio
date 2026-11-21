@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useRef, type ReactNode } from 'react';
 import * as THREE from 'three';
 import { useFrame, useThree } from '@react-three/fiber';
-import { Html } from '@react-three/drei';
+import { Html } from '@react-three/drei/web/Html';
 import { RectAreaLightUniformsLib } from 'three/examples/jsm/lights/RectAreaLightUniformsLib.js';
 import { aluminium, glass, disposeMaterials } from './materials';
 import { roundedBox } from './geometry';

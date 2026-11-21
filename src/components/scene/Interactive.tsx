@@ -1,7 +1,7 @@
 import { useEffect, useRef, type ReactNode } from 'react';
 import * as THREE from 'three';
 import { useFrame, type ThreeEvent } from '@react-three/fiber';
-import { Html } from '@react-three/drei';
+import { Html } from '@react-three/drei/web/Html';
 import { setState, useStore, getState, type DeskObjectId } from '../../state/store';
 import { meshesOf } from './materials';
 

@@ -1,6 +1,6 @@
 import { Suspense, useEffect, useState } from 'react';
 import { Canvas } from '@react-three/fiber';
-import { PerformanceMonitor } from '@react-three/drei';
+import { PerformanceMonitor } from '@react-three/drei/core/PerformanceMonitor';
 import * as THREE from 'three';
 import { Desk } from './Desk';
 import { Monitor } from './Monitor';
