@@ -852,7 +852,7 @@
 
 /* ---------- Full-screen workspace on small screens ---------- */
 
-@media (max-width: 720px) {
+@container ws (max-width: 720px) {
   .ws--full .ws__bar {
     grid-template-columns: auto 1fr;
     height: auto;
