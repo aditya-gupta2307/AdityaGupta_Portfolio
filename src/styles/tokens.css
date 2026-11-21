@@ -1,0 +1,53 @@
+:root {
+  color-scheme: dark;
+
+  /* Palette */
+  --ink-0: #08090b; /* near-black */
+  --ink-1: #101114; /* deep charcoal */
+  --ink-2: #16181c;
+  --ink-3: #1d2025;
+  --line: rgba(185, 190, 198, 0.12);
+  --line-strong: rgba(185, 190, 198, 0.22);
+  --silver: #b9bec6; /* titanium silver */
+  --white: #f4f5f7; /* soft white */
+  --muted: #858b94; /* muted gray */
+  --muted-2: #6a7079;
+
+  /* Meaningful accents, used sparingly */
+  --undercut: #ffb21e; /* Undercut's pit-exit amber */
+  --undercut-soft: rgba(255, 178, 30, 0.14);
+  --purdue: #cfb991; /* old gold */
+  --lamp: #f2c58a;
+  --ok: #4fd18b;
+
+  /* Type */
+  --font-sans: 'Inter Variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono Variable', ui-monospace, 'SF Mono', Menlo, monospace;
+
+  --step--1: clamp(0.8rem, 0.78rem + 0.1vw, 0.86rem);
+  --step-0: clamp(0.98rem, 0.95rem + 0.15vw, 1.06rem);
+  --step-1: clamp(1.15rem, 1.08rem + 0.35vw, 1.35rem);
+  --step-2: clamp(1.45rem, 1.3rem + 0.75vw, 1.95rem);
+  --step-3: clamp(1.9rem, 1.6rem + 1.5vw, 2.9rem);
+  --step-4: clamp(2.5rem, 1.9rem + 3vw, 4.6rem);
+  --step-5: clamp(3rem, 2.1rem + 4.6vw, 6.4rem);
+
+  /* Space */
+  --gutter: clamp(16px, 4vw, 56px);
+  --maxw: 1200px;
+  --radius: 14px;
+  --radius-lg: 22px;
+
+  /* Motion */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur: 420ms;
+
+  --nav-h: 60px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --dur: 1ms;
+  }
+}
