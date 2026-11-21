@@ -124,12 +124,27 @@ export function F1Car({ active = 0, accent = '#ffb21e', showPlinth = true }: Car
     const podL = loft(POD, 24, 2.8, 0.024);
     const podR = loft(POD, 24, 2.8, -0.024);
     const fin = new THREE.ExtrudeGeometry(
-      new THREE.Shape([new THREE.Vector2(-0.012, 0), new THREE.Vector2(-0.092, 0), new THREE.Vector2(-0.092, 0.006), new THREE.Vector2(-0.03, 0.016), new THREE.Vector2(-0.012, 0.016)]),
+      new THREE.Shape([
+        new THREE.Vector2(-0.012, 0),
+        new THREE.Vector2(-0.092, 0),
+        new THREE.Vector2(-0.092, 0.006),
+        new THREE.Vector2(-0.03, 0.016),
+        new THREE.Vector2(-0.012, 0.016),
+      ]),
       { depth: 0.0012, bevelEnabled: false },
     );
     fin.translate(0, 0.032, -0.0006);
     const halo = new THREE.TorusGeometry(0.0145, 0.0016, 10, 40, Math.PI * 1.05);
-    const pillar = tube([[0.03, 0.033, 0], [0.029, 0.04, 0], [0.024, 0.0445, 0]], 0.0016, 10, 8);
+    const pillar = tube(
+      [
+        [0.03, 0.033, 0],
+        [0.029, 0.04, 0],
+        [0.024, 0.0445, 0],
+      ],
+      0.0016,
+      10,
+      8,
+    );
     const arms: THREE.BufferGeometry[] = [];
     for (const w of WHEELS) {
       for (const s of [1, -1]) {
@@ -140,7 +155,13 @@ export function F1Car({ active = 0, accent = '#ffb21e', showPlinth = true }: Car
     }
     return { body, podL, podR, fin, halo, pillar, arms };
   }, []);
-  useEffect(() => () => Object.values(geo).flat().forEach((g) => g.dispose()), [geo]);
+  useEffect(
+    () => () =>
+      Object.values(geo)
+        .flat()
+        .forEach((g) => g.dispose()),
+    [geo],
+  );
 
   const roll = useRef<THREE.Group>(null);
   const wheels = useRef<THREE.Group[]>([]);

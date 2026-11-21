@@ -134,10 +134,7 @@ export function run(raw: string, history: string[]): CommandResult {
       const groups = arg ? skillGroups.filter((g) => g.id.startsWith(arg) || g.label.toLowerCase().startsWith(arg)) : skillGroups;
       if (!groups.length) return { lines: [{ kind: 'err', text: `no skill group "${arg}" — try: ${skillGroups.map((g) => g.id).join(', ')}` }] };
       return {
-        lines: groups.flatMap((g) => [
-          out(g.label, 'head'),
-          ...g.skills.map((s) => out(`  ${s.name}${s.usedIn ? `  — ${s.usedIn}` : ''}`)),
-        ]),
+        lines: groups.flatMap((g) => [out(g.label, 'head'), ...g.skills.map((s) => out(`  ${s.name}${s.usedIn ? `  — ${s.usedIn}` : ''}`))]),
       };
     }
 

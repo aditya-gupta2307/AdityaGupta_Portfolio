@@ -110,24 +110,13 @@ export function Monitor({ screen, screenHidden, reducedMotion }: Props) {
         <planeGeometry args={[SCREEN.width, SCREEN.height]} />
       </mesh>
 
-      <rectAreaLight
-        ref={light}
-        args={['#dfe6f2', 0, SCREEN.width, SCREEN.height]}
-        position={[cx, cy, cz + 0.01]}
-        rotation={[0, 0, 0]}
-      />
+      <rectAreaLight ref={light} args={['#dfe6f2', 0, SCREEN.width, SCREEN.height]} position={[cx, cy, cz + 0.01]} rotation={[0, 0, 0]} />
 
       {/* Stand: hinge, a single tapered column and a thin foot. */}
       <mesh material={mats.stand} position={[cx, cy + 0.02, bodyZ - 0.026]} rotation={[0, 0, Math.PI / 2]} castShadow>
         <cylinderGeometry args={[0.011, 0.011, 0.09, 32]} />
       </mesh>
-      <mesh
-        geometry={roundedBox(0.07, 0.34, 0.012, 0.004)}
-        material={mats.stand}
-        position={[cx, 0.17, bodyZ - 0.05]}
-        rotation={[-0.11, 0, 0]}
-        castShadow
-      />
+      <mesh geometry={roundedBox(0.07, 0.34, 0.012, 0.004)} material={mats.stand} position={[cx, 0.17, bodyZ - 0.05]} rotation={[-0.11, 0, 0]} castShadow />
       <mesh geometry={roundedBox(0.22, 0.008, 0.17, 0.004)} material={mats.stand} position={[cx, 0.004, bodyZ - 0.02]} castShadow receiveShadow />
       <mesh material={mats.foot} position={[cx, 0.0008, bodyZ - 0.02]}>
         <boxGeometry args={[0.2, 0.0016, 0.15]} />

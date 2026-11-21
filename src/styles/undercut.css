@@ -3,9 +3,7 @@
    ========================================================================== */
 
 body {
-  background:
-    radial-gradient(70% 50% at 80% 0%, rgba(255, 178, 30, 0.07), transparent 60%),
-    var(--ink-0);
+  background: radial-gradient(70% 50% at 80% 0%, rgba(255, 178, 30, 0.07), transparent 60%), var(--ink-0);
 }
 
 .flip {
@@ -289,9 +287,7 @@ body {
 .demo {
   border-radius: 20px;
   border: 1px solid rgba(255, 178, 30, 0.2);
-  background:
-    linear-gradient(160deg, rgba(255, 178, 30, 0.05), transparent 40%),
-    var(--ink-1);
+  background: linear-gradient(160deg, rgba(255, 178, 30, 0.05), transparent 40%), var(--ink-1);
   padding: 20px;
 }
 .demo__label {

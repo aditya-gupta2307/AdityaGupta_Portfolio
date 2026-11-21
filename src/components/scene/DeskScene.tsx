@@ -22,7 +22,18 @@ interface Props {
   reducedMotion: boolean;
 }
 
-function Obj({ id, children, ...rest }: { id: DeskObjectId; children: React.ReactNode; position?: [number, number, number]; rotation?: [number, number, number]; labelOffset?: [number, number, number]; lift?: number }) {
+function Obj({
+  id,
+  children,
+  ...rest
+}: {
+  id: DeskObjectId;
+  children: React.ReactNode;
+  position?: [number, number, number];
+  rotation?: [number, number, number];
+  labelOffset?: [number, number, number];
+  lift?: number;
+}) {
   const o = deskObject(id);
   const lampOn = useStore((s) => s.lampOn);
   const hint = id === 'lamp' ? (lampOn ? 'Click to switch it off' : 'Click to switch it on') : o.hint;

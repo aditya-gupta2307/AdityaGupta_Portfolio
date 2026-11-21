@@ -113,7 +113,13 @@ export function Notebook() {
   useEffect(() => () => disposeMaterials(Object.values(mats)), [mats]);
   return (
     <group>
-      <mesh geometry={roundedBox(0.15, 0.013, 0.21, 0.003)} material={[mats.pages, mats.cover, mats.cover, mats.cover, mats.pages, mats.pages]} position={[0, 0.0065, 0]} castShadow receiveShadow />
+      <mesh
+        geometry={roundedBox(0.15, 0.013, 0.21, 0.003)}
+        material={[mats.pages, mats.cover, mats.cover, mats.cover, mats.pages, mats.pages]}
+        position={[0, 0.0065, 0]}
+        castShadow
+        receiveShadow
+      />
       <mesh material={mats.band} position={[0.05, 0.0132, 0]}>
         <boxGeometry args={[0.005, 0.0008, 0.212]} />
       </mesh>

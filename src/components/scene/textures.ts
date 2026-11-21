@@ -4,7 +4,7 @@ import * as THREE from 'three';
 function makeNoise(seed = 1) {
   const perm = new Uint8Array(512);
   let s = seed >>> 0;
-  const rnd = () => ((s = (s * 1664525 + 1013904223) >>> 0) / 4294967296);
+  const rnd = () => (s = (s * 1664525 + 1013904223) >>> 0) / 4294967296;
   const p = Array.from({ length: 256 }, (_, i) => i);
   for (let i = 255; i > 0; i--) {
     const j = Math.floor(rnd() * (i + 1));

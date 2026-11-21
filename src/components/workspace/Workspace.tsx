@@ -40,7 +40,9 @@ function Desktop({ interactive }: { interactive: boolean }) {
   return (
     <div className="desk">
       <div className="desk__hello" aria-hidden={windows.length > 0}>
-        <p className="desk__eyebrow">{profile.year} · {profile.location}</p>
+        <p className="desk__eyebrow">
+          {profile.year} · {profile.location}
+        </p>
         <h2 className="desk__name">{profile.name}</h2>
         <p className="desk__role">{profile.role}</p>
       </div>

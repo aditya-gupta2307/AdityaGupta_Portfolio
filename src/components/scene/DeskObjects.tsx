@@ -11,10 +11,7 @@ import { rig } from './bridge';
 /* ------------------------------------------------------------------ */
 
 export function Mouse() {
-  const mats = useMemo(
-    () => ({ shell: ceramic('#e9eaec'), base: plastic('#1a1b1e', 0.8), seam: plastic('#9aa0a8', 0.5), wheel: rubber('#2b2d31') }),
-    [],
-  );
+  const mats = useMemo(() => ({ shell: ceramic('#e9eaec'), base: plastic('#1a1b1e', 0.8), seam: plastic('#9aa0a8', 0.5), wheel: rubber('#2b2d31') }), []);
   useEffect(() => () => disposeMaterials(Object.values(mats)), [mats]);
   const click = useRef(0);
   const shell = useRef<THREE.Group>(null);
@@ -76,7 +73,22 @@ export function Mug() {
       ]),
     [],
   );
-  const handle = useMemo(() => tube([[0.039, 0.078, 0], [0.062, 0.074, 0], [0.066, 0.05, 0], [0.058, 0.03, 0], [0.039, 0.026, 0]], 0.0055, 40, 12), []);
+  const handle = useMemo(
+    () =>
+      tube(
+        [
+          [0.039, 0.078, 0],
+          [0.062, 0.074, 0],
+          [0.066, 0.05, 0],
+          [0.058, 0.03, 0],
+          [0.039, 0.026, 0],
+        ],
+        0.0055,
+        40,
+        12,
+      ),
+    [],
+  );
 
   const turns = useStore((s) => s.mugTurns);
   const group = useRef<THREE.Group>(null);

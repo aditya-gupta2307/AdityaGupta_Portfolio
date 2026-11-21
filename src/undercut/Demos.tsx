@@ -4,7 +4,23 @@ import { simulatePL, undercutGap, type UndercutInput } from './models';
 const CARS = ['Car A', 'Car B', 'Car C', 'Car D', 'Car E'];
 const pct = (v: number) => `${(v * 100).toFixed(1)}%`;
 
-function Slider({ label, value, min, max, step, unit, onChange }: { label: string; value: number; min: number; max: number; step: number; unit?: string; onChange: (v: number) => void }) {
+function Slider({
+  label,
+  value,
+  min,
+  max,
+  step,
+  unit,
+  onChange,
+}: {
+  label: string;
+  value: number;
+  min: number;
+  max: number;
+  step: number;
+  unit?: string;
+  onChange: (v: number) => void;
+}) {
   const id = `s-${label.replace(/\W+/g, '-').toLowerCase()}`;
   return (
     <div className="slider">
@@ -31,7 +47,9 @@ export function RankingDemo() {
       <div className="demo__label">Illustration · hypothetical cars, not Undercut’s fitted ratings</div>
       <div className="demo__grid">
         <div className="demo__controls">
-          <p className="demo__hint">Set each car’s log-strength. The model picks a winner with probability proportional to e^strength, then second place from who is left, and so on.</p>
+          <p className="demo__hint">
+            Set each car’s log-strength. The model picks a winner with probability proportional to e^strength, then second place from who is left, and so on.
+          </p>
           {CARS.map((c, i) => (
             <Slider key={c} label={c} value={s[i]} min={-1} max={2} step={0.05} onChange={(v) => setS((x) => x.map((y, j) => (j === i ? v : y)))} />
           ))}

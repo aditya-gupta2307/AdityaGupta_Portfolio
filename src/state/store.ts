@@ -80,7 +80,11 @@ export function subscribe(l: () => void) {
 }
 
 export function useStore<T>(select: (s: UIState) => T): T {
-  return useSyncExternalStore(subscribe, () => select(state), () => select(state));
+  return useSyncExternalStore(
+    subscribe,
+    () => select(state),
+    () => select(state),
+  );
 }
 
 /* ---------- actions ---------- */

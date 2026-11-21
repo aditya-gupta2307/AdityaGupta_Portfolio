@@ -43,7 +43,14 @@ export function Nav() {
           {profile.name}
           <span>CS @ Purdue</span>
         </a>
-        <button type="button" className="nav__burger" aria-expanded={open} aria-controls="nav-links" aria-label={open ? 'Close menu' : 'Open menu'} onClick={() => setOpen((o) => !o)}>
+        <button
+          type="button"
+          className="nav__burger"
+          aria-expanded={open}
+          aria-controls="nav-links"
+          aria-label={open ? 'Close menu' : 'Open menu'}
+          onClick={() => setOpen((o) => !o)}
+        >
           <Icon name={open ? 'close' : 'menu'} />
         </button>
         <ul className="nav__links" id="nav-links" data-open={open}>

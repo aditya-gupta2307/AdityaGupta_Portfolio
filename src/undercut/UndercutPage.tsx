@@ -9,19 +9,51 @@ const CarStage = lazy(() => import('./CarStage'));
 const HOME = import.meta.env.BASE_URL;
 
 const PIPELINE = [
-  { n: '01', title: 'Collect', text: 'Results and standings from the Jolpica F1 API; lap times, pit stops, positions and team radio from OpenF1; rain forecasts from Open-Meteo.' },
-  { n: '02', title: 'Queue', text: 'One shared request queue deduplicates identical in-flight requests, respects each API’s rate limits with sliding windows that survive a reload, prioritises what is on screen, and retries with backoff.' },
-  { n: '03', title: 'Rate', text: 'A Plackett–Luce ranking model splits every result into a car term and a driver term, weighting recent races more. A separate model estimates each car’s chance of retiring.' },
-  { n: '04', title: 'Simulate', text: 'The next race is simulated 20,000 times and the rest of the season 8,000 times. During a race, the same idea runs after every lap with the real gaps, tyres and stops.' },
-  { n: '05', title: 'Grade', text: 'A walk-forward backtest re-predicts every past race using only what was known beforehand, then scores it against simple baselines such as grid order.' },
+  {
+    n: '01',
+    title: 'Collect',
+    text: 'Results and standings from the Jolpica F1 API; lap times, pit stops, positions and team radio from OpenF1; rain forecasts from Open-Meteo.',
+  },
+  {
+    n: '02',
+    title: 'Queue',
+    text: 'One shared request queue deduplicates identical in-flight requests, respects each API’s rate limits with sliding windows that survive a reload, prioritises what is on screen, and retries with backoff.',
+  },
+  {
+    n: '03',
+    title: 'Rate',
+    text: 'A Plackett–Luce ranking model splits every result into a car term and a driver term, weighting recent races more. A separate model estimates each car’s chance of retiring.',
+  },
+  {
+    n: '04',
+    title: 'Simulate',
+    text: 'The next race is simulated 20,000 times and the rest of the season 8,000 times. During a race, the same idea runs after every lap with the real gaps, tyres and stops.',
+  },
+  {
+    n: '05',
+    title: 'Grade',
+    text: 'A walk-forward backtest re-predicts every past race using only what was known beforehand, then scores it against simple baselines such as grid order.',
+  },
 ];
 
 const ENGINEERING = [
   { title: 'No server', text: 'The browser downloads the public data and does all of the maths itself, so the site is a static deploy on GitHub Pages.' },
-  { title: 'Uncertainty, not just a ranking', text: 'The ratings are fitted with Gaussian priors and Newton’s method; the Hessian gives Laplace-approximation uncertainty bars on every driver and car.' },
-  { title: 'Less noisy probabilities', text: 'Win chances are Rao–Blackwellised: each simulation adds every surviving car’s exact first-choice probability instead of only counting the sampled winner.' },
-  { title: 'Strategy Lab', text: 'A per-race tyre model — a robust regression of lap time on compound, tyre age and fuel — replays a car’s race under a different pit plan and searches every one- and two-stop strategy.' },
-  { title: 'Tested end to end', text: 'Unit tests cover the models and data parsing; Playwright tests run the built site against a fake API. GitHub Actions type-checks, tests, builds and deploys.' },
+  {
+    title: 'Uncertainty, not just a ranking',
+    text: 'The ratings are fitted with Gaussian priors and Newton’s method; the Hessian gives Laplace-approximation uncertainty bars on every driver and car.',
+  },
+  {
+    title: 'Less noisy probabilities',
+    text: 'Win chances are Rao–Blackwellised: each simulation adds every surviving car’s exact first-choice probability instead of only counting the sampled winner.',
+  },
+  {
+    title: 'Strategy Lab',
+    text: 'A per-race tyre model — a robust regression of lap time on compound, tyre age and fuel — replays a car’s race under a different pit plan and searches every one- and two-stop strategy.',
+  },
+  {
+    title: 'Tested end to end',
+    text: 'Unit tests cover the models and data parsing; Playwright tests run the built site against a fake API. GitHub Actions type-checks, tests, builds and deploys.',
+  },
 ];
 
 export function UndercutPage() {
@@ -147,9 +179,9 @@ export function UndercutPage() {
                 Strength in, chances out.
               </h2>
               <p className="uc-text">
-                Undercut reads a finishing order as a sequence of choices: the winner is picked from everyone in proportion to their strength, second place from whoever is left,
-                and so on. In Undercut each strength is a car term plus a driver term; teammates share the car term, so the driver term measures someone against the person in
-                identical machinery.
+                Undercut reads a finishing order as a sequence of choices: the winner is picked from everyone in proportion to their strength, second place from
+                whoever is left, and so on. In Undercut each strength is a car term plus a driver term; teammates share the car term, so the driver term
+                measures someone against the person in identical machinery.
               </p>
               <p className="uc-text">The explainer here uses five made-up cars so you can see how strengths turn into win and podium chances.</p>
             </div>
@@ -165,8 +197,8 @@ export function UndercutPage() {
                 Why “undercut”?
               </h2>
               <p className="uc-text">
-                Pit before the car ahead and your new tyres are faster than their worn ones for a lap or two. If that gains back more than the gap, you come out in front when
-                they stop. Undercut’s Strategy Lab does this properly with a fitted tyre model; this toy version shows the idea.
+                Pit before the car ahead and your new tyres are faster than their worn ones for a lap or two. If that gains back more than the gap, you come out
+                in front when they stop. Undercut’s Strategy Lab does this properly with a fitted tyre model; this toy version shows the idea.
               </p>
             </div>
             <UndercutDemo />
@@ -190,8 +222,8 @@ export function UndercutPage() {
             <div className="uc-limits">
               <h3>Known limitations</h3>
               <p>
-                The model doesn’t know about weather, car upgrades or late penalties, so wet races are harder to call than the numbers suggest. The Strategy Lab doesn’t model
-                traffic or other cars reacting to a stop.
+                The model doesn’t know about weather, car upgrades or late penalties, so wet races are harder to call than the numbers suggest. The Strategy Lab
+                doesn’t model traffic or other cars reacting to a stop.
               </p>
             </div>
             <div className="chip-row uc-stack">
@@ -224,9 +256,12 @@ export function UndercutPage() {
 
       <footer className="footer">
         <div className="uc-wrap footer__inner">
-          <p>© {new Date().getFullYear()} {profile.name}</p>
+          <p>
+            © {new Date().getFullYear()} {profile.name}
+          </p>
           <p className="muted uc-disclaimer">
-            Undercut is an unofficial fan project and isn’t associated with the Formula 1 companies. F1 and related marks are trade marks of Formula One Licensing B.V.
+            Undercut is an unofficial fan project and isn’t associated with the Formula 1 companies. F1 and related marks are trade marks of Formula One
+            Licensing B.V.
           </p>
         </div>
       </footer>

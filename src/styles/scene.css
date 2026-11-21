@@ -20,8 +20,7 @@
   inset: 0;
   pointer-events: none;
   background:
-    linear-gradient(180deg, rgba(8, 9, 11, 0.55) 0%, rgba(8, 9, 11, 0) 14%),
-    radial-gradient(120% 90% at 50% 50%, transparent 55%, rgba(8, 9, 11, 0.55) 100%);
+    linear-gradient(180deg, rgba(8, 9, 11, 0.55) 0%, rgba(8, 9, 11, 0) 14%), radial-gradient(120% 90% at 50% 50%, transparent 55%, rgba(8, 9, 11, 0.55) 100%);
 }
 
 .scene-fallback {
@@ -29,8 +28,7 @@
   inset: 0;
   background:
     radial-gradient(60% 50% at 70% 55%, rgba(185, 190, 198, 0.12), transparent 70%),
-    radial-gradient(30% 30% at 30% 40%, rgba(242, 197, 138, 0.07), transparent 70%),
-    var(--ink-0);
+    radial-gradient(30% 30% at 30% 40%, rgba(242, 197, 138, 0.07), transparent 70%), var(--ink-0);
 }
 
 .desk-label {
