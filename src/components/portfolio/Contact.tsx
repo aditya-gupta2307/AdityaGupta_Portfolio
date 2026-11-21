@@ -40,7 +40,7 @@ export function Resume() {
 }
 
 /** Scene 7: contact, as the camera pulls back to the whole desk. */
-export function Contact() {
+export function Contact({ has3D }: { has3D: boolean }) {
   return (
     <section id="contact" className="section contact" aria-labelledby="contact-title">
       <div className="container">
@@ -64,7 +64,10 @@ export function Contact() {
               <Icon name="github" size={16} /> Source
             </a>
           </p>
-          <p className="muted">Desk modelled in code with Three.js — no 3D assets downloaded.</p>
+          <p className="muted">
+            Desk modelled in code with Three.js ·{' '}
+            {has3D ? <a href="?lite">Lite version without 3D</a> : <a href="./">Full 3D version</a>}
+          </p>
         </div>
       </footer>
     </section>

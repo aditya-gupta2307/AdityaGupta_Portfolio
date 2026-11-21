@@ -14,7 +14,8 @@ import { setState, useStore } from './state/store';
 
 export default function App() {
   const reducedMotion = useReducedMotion();
-  const [has3D, setHas3D] = useState(() => hasWebGL());
+  // ?lite turns the 3D scene off (also the automatic fallback without WebGL).
+  const [has3D, setHas3D] = useState(() => hasWebGL() && !new URLSearchParams(window.location.search).has('lite'));
   const [quality] = useState(detectQuality);
   const focused = useStore((s) => s.focus !== null);
 
@@ -47,7 +48,7 @@ export default function App() {
         <Skills />
         <About />
         <Resume />
-        <Contact />
+        <Contact has3D={has3D} />
       </main>
       <UndercutIntro />
     </>
