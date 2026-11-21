@@ -147,14 +147,15 @@
 .desk__hello {
   position: absolute;
   left: 50%;
-  top: 46%;
+  top: 50%;
   transform: translate(-50%, -50%);
+  width: min(760px, calc(100% - 180px));
   text-align: center;
-  pointer-events: none;
   transition: opacity 400ms var(--ease-out);
 }
 .desk__hello[aria-hidden='true'] {
-  opacity: 0.16;
+  opacity: 0;
+  pointer-events: none;
 }
 .desk__eyebrow {
   font-family: var(--font-mono);
@@ -162,23 +163,81 @@
   letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--muted);
-  margin-bottom: 14px;
+  margin-bottom: 12px;
 }
-.desk__name {
-  font-size: 76px;
+.desk__greet {
+  font-size: 34px;
   font-weight: 600;
-  letter-spacing: -0.045em;
-  line-height: 1;
-  background: linear-gradient(180deg, #ffffff 0%, #c3c7ce 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  letter-spacing: -0.03em;
+  color: var(--white);
+  margin-bottom: 28px;
 }
-.desk__role {
-  margin-top: 14px;
-  font-size: 22px;
+.desk__widgets {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  text-align: left;
+}
+.widget {
+  display: grid;
+  gap: 6px;
+  align-content: start;
+  padding: 16px 18px;
+  border-radius: 16px;
+  border: 1px solid rgba(244, 245, 247, 0.09);
+  background: rgba(22, 24, 28, 0.78);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  cursor: pointer;
+  text-align: left;
+  transition:
+    border-color 200ms,
+    background-color 200ms,
+    transform 200ms var(--ease-out);
+}
+.widget:hover {
+  border-color: var(--line-strong);
+  background: rgba(30, 32, 37, 0.85);
+  transform: translateY(-1px);
+}
+.widget--undercut {
+  border-color: rgba(255, 178, 30, 0.25);
+  background: linear-gradient(150deg, rgba(255, 178, 30, 0.09), transparent 55%), rgba(22, 24, 28, 0.78);
+}
+.widget__label {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.widget--undercut .widget__label {
+  color: var(--undercut);
+}
+.widget__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--undercut);
+  box-shadow: 0 0 8px rgba(255, 178, 30, 0.8);
+}
+.widget__title {
+  font-size: 19px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--white);
+}
+.widget__title--mono {
+  font-family: var(--font-mono);
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--ok);
+}
+.widget__text {
+  font-size: 13px;
   color: var(--silver);
-  letter-spacing: -0.01em;
 }
 
 .desk__icons {
@@ -808,14 +867,46 @@
 .screen__hit {
   position: absolute;
   inset: 0;
+  z-index: 6;
   opacity: 0;
   cursor: pointer;
   border: 0;
   background: transparent;
 }
+.screen__splash {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  display: grid;
+  place-content: center;
+  text-align: center;
+  gap: 14px;
+  background: radial-gradient(80% 80% at 50% 45%, #15171b, #0a0b0d);
+  opacity: 0;
+  transition: opacity 600ms var(--ease-out);
+}
+.screen__splash[data-visible='true'] {
+  opacity: 1;
+}
+.screen__splash-name {
+  font-size: 88px;
+  font-weight: 600;
+  letter-spacing: -0.045em;
+  line-height: 1;
+  background: linear-gradient(180deg, #ffffff 0%, #c3c7ce 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.screen__splash-role {
+  font-size: 26px;
+  color: var(--silver);
+  letter-spacing: -0.01em;
+}
 .screen__closing {
   position: absolute;
   inset: 44px 0 0;
+  z-index: 5;
   display: grid;
   place-content: center;
   text-align: center;
@@ -875,11 +966,19 @@
     transform: none;
     text-align: left;
   }
-  .ws--full .desk__name {
-    font-size: 40px;
+  .ws--full .desk__hello {
+    width: auto;
   }
-  .ws--full .desk__role {
-    font-size: 17px;
+  .ws--full .desk__greet {
+    font-size: 22px;
+    margin-bottom: 14px;
+  }
+  .ws--full .desk__widgets {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  .ws--full .widget {
+    padding: 12px 14px;
   }
   .ws--full .desk__icons {
     left: 10px;
