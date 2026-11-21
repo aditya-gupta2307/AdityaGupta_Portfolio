@@ -68,7 +68,9 @@ export function Terminal({ interactive }: { interactive: boolean }) {
       apply(value, run(value, [...history, value.trim()].filter(Boolean)));
       setValue('');
       setCursor(null);
-    } else if (e.key === 'Tab') {
+    } else if (e.key === 'Tab' && !e.shiftKey && value.trim()) {
+      // Complete only when there is something to complete, so Tab still
+      // moves keyboard focus out of an empty prompt.
       e.preventDefault();
       setValue((v) => complete(v));
     } else if (e.key === 'ArrowUp') {
