@@ -92,15 +92,15 @@ export default function DeskScene({ quality, reducedMotion }: Props) {
           <Mouse />
         </Obj>
 
-        <Obj id="car" position={[0.5, 0, -0.19]} rotation={[0, -0.72, 0]} labelOffset={[0, 0.12, 0]} lift={0.004}>
+        <Obj id="car" position={[0.4, 0, -0.08]} rotation={[0, -0.62, 0]} labelOffset={[0, 0.12, 0]} lift={0.004}>
           <CarSlot />
         </Obj>
 
-        <Obj id="mug" position={[0.54, 0, 0.06]} labelOffset={[0, 0.16, 0]}>
+        <Obj id="mug" position={[0.62, 0, 0.16]} labelOffset={[0, 0.16, 0]}>
           <Mug />
         </Obj>
 
-        <Obj id="cube" position={[0.7, 0, -0.06]} labelOffset={[0, 0.12, 0]}>
+        <Obj id="cube" position={[0.64, 0, -0.24]} labelOffset={[0, 0.12, 0]}>
           <PuzzleCube />
         </Obj>
 
