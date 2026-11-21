@@ -1,8 +1,15 @@
 import { useRef } from 'react';
 import * as THREE from 'three';
 import { useFrame } from '@react-three/fiber';
-import { Environment, Lightformer } from '@react-three/drei';
+import { StudioEnvironment, type Panel } from './StudioEnvironment';
 import { rig } from './bridge';
+
+const PANELS: Panel[] = [
+  { size: [6, 2.5], position: [0, 4, 2], rotation: [Math.PI / 2.4, 0, 0], color: '#f4f5f7', intensity: 2.2 },
+  { size: [4, 1], position: [-4, 1.5, 0], rotation: [0, Math.PI / 2, 0], color: '#ffe9d2', intensity: 1.2 },
+  { size: [4, 0.6], position: [4, 1.5, -1], rotation: [0, -Math.PI / 2, 0], color: '#d6e0ff', intensity: 1 },
+  { shape: 'ring', size: [2.5, 2.5], position: [0, 2, -4], color: '#b9bec6', intensity: 0.6 },
+];
 
 /**
  * Studio lighting: a soft key from the front-left that casts the shadows, a
@@ -40,13 +47,7 @@ export function Lights({ shadows, mapSize }: { shadows: boolean; mapSize: number
       <directionalLight position={[1.6, 1.3, -1.8]} intensity={1.1} color="#c7d3ff" />
       <directionalLight position={[2.2, 0.6, 1.2]} intensity={0.25} color="#e8ecf4" />
 
-      <Environment resolution={256} frames={1}>
-        <color attach="background" args={['#060708']} />
-        <Lightformer form="rect" intensity={2.2} position={[0, 4, 2]} rotation-x={Math.PI / 2.4} scale={[6, 2.5, 1]} color="#f4f5f7" />
-        <Lightformer form="rect" intensity={1.2} position={[-4, 1.5, 0]} rotation-y={Math.PI / 2} scale={[4, 1, 1]} color="#ffe9d2" />
-        <Lightformer form="rect" intensity={1} position={[4, 1.5, -1]} rotation-y={-Math.PI / 2} scale={[4, 0.6, 1]} color="#d6e0ff" />
-        <Lightformer form="ring" intensity={0.6} position={[0, 2, -4]} scale={2.5} color="#b9bec6" />
-      </Environment>
+      <StudioEnvironment panels={PANELS} />
     </>
   );
 }
