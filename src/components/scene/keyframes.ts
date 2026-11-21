@@ -36,7 +36,7 @@ export function sceneKeyframes(aspect: number): Record<SceneId, KF> {
   if (portrait) {
     return {
       hero: kf([0.95, 1.05, 2.75], [0.02, 0.16, -0.05], { fov: 34, shiftY: 0.16, parallax: 0.6 }),
-      approach: kf([0.3, 0.55, 1.35], [0, 0.3, -0.2], { fov: 34 }),
+      approach: kf([0.22, 0.62, 1.75], [0, 0.28, -0.2], { fov: 34, shiftY: 0.22 }),
       workspace: kf([sx, sy, sz + enterD], [sx, sy, sz], { fov: enterFov, parallax: 0 }),
       projects: kf([0.82, 0.36, 0.02], [0.4, 0.04, -0.08], { fov: 34, shiftY: 0.22 }),
       skills: kf([0.1, 0.62, 0.62], [-0.04, 0, 0.08], { fov: 34, shiftY: 0.22 }),

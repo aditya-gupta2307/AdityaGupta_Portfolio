@@ -1005,6 +1005,24 @@
   .hints {
     display: none;
   }
+  .page[data-3d='false'] .hero {
+    padding-top: calc(var(--nav-h) + 12vh);
+  }
+  .approach::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background: linear-gradient(180deg, rgba(8, 9, 11, 0) 55%, rgba(8, 9, 11, 0.88) 78%);
+  }
+  .approach__inner {
+    padding-bottom: 4vh;
+  }
+  .approach__modes {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
   .flagship__head {
     min-height: auto;
   }
