@@ -13,6 +13,9 @@ export default defineConfig({
   },
   build: {
     target: 'es2022',
+    // Explicit CSS targets: with the default, the minifier kept only
+    // -webkit-backdrop-filter and dropped the standard property Chrome needs.
+    cssTarget: ['chrome111', 'edge111', 'firefox114', 'safari16.4'],
     // The Three.js chunk is large by nature but is only loaded after the page
     // content has rendered.
     chunkSizeWarningLimit: 1300,

@@ -47,8 +47,8 @@
   padding: 0 14px;
   border-bottom: 1px solid var(--line);
   background: rgba(8, 9, 11, 0.5);
-  backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
   font-size: 13px;
 }
 .ws__brand {

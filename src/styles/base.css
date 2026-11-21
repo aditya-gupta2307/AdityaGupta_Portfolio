@@ -233,8 +233,8 @@ button {
 }
 .nav[data-solid='true'] {
   background: rgba(8, 9, 11, 0.72);
-  backdrop-filter: saturate(160%) blur(18px);
   -webkit-backdrop-filter: saturate(160%) blur(18px);
+  backdrop-filter: saturate(160%) blur(18px);
   border-bottom-color: var(--line);
 }
 .nav__inner {
@@ -329,8 +329,8 @@ button {
     border-radius: var(--radius-lg);
     border: 1px solid var(--line);
     background: rgba(16, 17, 20, 0.96);
-    backdrop-filter: blur(18px);
     -webkit-backdrop-filter: blur(18px);
+    backdrop-filter: blur(18px);
     opacity: 0;
     transform: translateY(-8px);
     pointer-events: none;
