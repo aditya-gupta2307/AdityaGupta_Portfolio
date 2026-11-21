@@ -28,7 +28,7 @@ export function WorkspaceSection({ has3D }: { has3D: boolean }) {
     const expand = ScrollTrigger.create({
       trigger: el,
       start: 'top top',
-      end: () => `+=${window.innerHeight * 0.55}`,
+      end: () => `+=${window.innerHeight * 0.45}`,
       onUpdate: (self) => {
         progress = self.progress;
       },
@@ -69,7 +69,12 @@ export function WorkspaceSection({ has3D }: { has3D: boolean }) {
       i.style.height = `${h / k}px`;
       i.style.transform = `scale(${k})`;
 
-      setState({ panelVisible: show, canvasPaused: show && progress >= 1 });
+      // "Stuck" while the sticky panel still fills the viewport. Once it starts
+      // sliding away the scene behind must be live again, or the visitor sees
+      // a frozen frame and then a jump.
+      const bottom = el.getBoundingClientRect().bottom;
+      const stuck = show && bottom >= vh - 1;
+      setState({ panelVisible: stuck, canvasPaused: stuck && progress >= 1 });
     };
     raf = requestAnimationFrame(frame);
 
