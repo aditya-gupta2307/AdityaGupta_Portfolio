@@ -48,7 +48,7 @@ export function sceneKeyframes(aspect: number): Record<SceneId, KF> {
 
   return {
     hero: kf([1.22, 0.8, 1.52], [0.02, 0.15, -0.06], { shiftX: 0.17, parallax: 1 }),
-    approach: kf([0.3, 0.5, 1.0], [0, 0.31, -0.2], { shiftY: 0.12, parallax: 0.6 }),
+    approach: kf([0.3, 0.52, 1.08], [0, 0.31, -0.2], { shiftY: 0.21, parallax: 0.6 }),
     workspace: kf([sx, sy, sz + enterD], [sx, sy, sz], { fov: enterFov, parallax: 0 }),
     projects: kf([0.98, 0.3, 0.04], [0.42, 0.05, -0.1], { fov: 30, shiftX: 0.22 }),
     skills: kf([0.26, 0.44, 0.52], [-0.04, 0.0, 0.07], { fov: 30, shiftX: 0.24 }),
