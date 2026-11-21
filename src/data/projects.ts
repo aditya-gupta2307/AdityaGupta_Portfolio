@@ -37,7 +37,7 @@ export const undercut: Project = {
     'Collected and cleaned race data from three public sources (Jolpica, OpenF1, Open-Meteo), matching records into one consistent dataset.',
     'Created a prediction model that rates drivers and cars from past results, then simulates each race thousands of times to estimate every driver’s chances.',
     'Designed interactive charts and dashboards — win-probability heatmaps and title trends — that turn raw timing data into readable insights.',
-    'Measured the model’s accuracy against real race results with a walk-forward backtest.',
+    'Used AI tools to build and test features faster, and measured the model’s accuracy against real race results with a walk-forward backtest.',
     'Cut duplicate data requests with a shared request queue and caching, keeping the site within the free APIs’ rate limits.',
   ],
   interesting: [
