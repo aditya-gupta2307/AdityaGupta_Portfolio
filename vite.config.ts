@@ -13,15 +13,20 @@ export default defineConfig({
   },
   build: {
     target: 'es2022',
+    // The Three.js chunk is large by nature but is only loaded after the page
+    // content has rendered.
+    chunkSizeWarningLimit: 1300,
     rollupOptions: {
       input: {
         main: resolve(__dirname, 'index.html'),
         undercut: resolve(__dirname, 'undercut/index.html'),
       },
       output: {
+        // React renders the page text, so it ships up front; Three.js and
+        // React Three Fiber are only reached through the lazily loaded scene.
         manualChunks(id) {
-          if (id.includes('node_modules/three/')) return 'three';
-          if (id.includes('@react-three') || id.includes('three-stdlib') || id.includes('troika')) return 'r3f';
+          if (/node_modules\/(react|react-dom|scheduler)\//.test(id)) return 'react';
+          if (/node_modules\/(three|three-stdlib|@react-three|its-fine|zustand|suspend-react|react-use-measure)\//.test(id)) return 'three';
           if (id.includes('node_modules/gsap')) return 'gsap';
           return undefined;
         },
